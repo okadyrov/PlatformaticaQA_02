@@ -23,7 +23,7 @@ public class GroupAllaTest {
         driver = new ChromeDriver();
     }
     @Test
-    public void gunchenkoAlexTest() throws InterruptedException {
+    public void testGunchenkoAlex() {
 
         driver.get("https://www.google.com/");
 
@@ -31,7 +31,6 @@ public class GroupAllaTest {
 
         input.sendKeys("gismeteo\n");
 
-        //    WebElement result = driver.findElement(By.xpath("//h3[text() =  '222 год — Википедия']"));
         WebElement result1 = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div/div[1]/a/h3"));
         Assert.assertEquals(result1.getText(), "GISMETEO: Погода в Украине, прогноз погоды на сегодня ...");
         WebElement GismeteoButton = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div/div[1]/a/h3"));
@@ -43,18 +42,17 @@ public class GroupAllaTest {
         //  write name region
         searchField.sendKeys("Харьков\n");
 
-
         // click on region
 
-        driver.findElement(By.xpath("/html/body/section/div[2]/div/section[2]/div/div/div[1]/a[1]")).click();
-
+      //  driver.findElement(By.xpath("/html/body/section/div[2]/div/section[2]/div/div/div[1]/a[1]")).click();
+        driver.findElement(By.linkText("Харьков")).click();
         driver.findElement(By.xpath("/html/body/section/nav/div/ul/li[6]/a")).click();
-        Thread.sleep(1000);
+
         driver.findElement(By.xpath("/html/body/section/nav/div/ul/li[7]/a")).click();
         WebElement pageTitile = driver.findElement(By.tagName("h1"));
         String pageTitleName = pageTitile.getText();
-        Assert.assertEquals(pageTitleName, "Погода в Харькове на месяц");
-        Thread.sleep(4000);
+        Assert.assertEquals(pageTitleName, "Погода в аэропорту Харьков на месяц");
+
     }
     @AfterMethod
     public void afterTest() {
