@@ -23,7 +23,7 @@ public class GroupAllaTest {
         driver = new ChromeDriver();
     }
     @Test
-    public void GunchenkoAlexTest() throws InterruptedException {
+    public void gunchenkoAlexTest() throws InterruptedException {
 
         driver.get("https://www.google.com/");
 
