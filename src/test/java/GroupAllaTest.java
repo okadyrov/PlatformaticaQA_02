@@ -41,12 +41,7 @@ public class GroupAllaTest {
 
     }
 
-    @AfterMethod
-    public void afterTest() {
-        driver.quit(); }
-}
-    }
-    @Test
+      @Test
     public void testGunchenkoAlex() {
 
         driver.get("https://www.google.com/");
