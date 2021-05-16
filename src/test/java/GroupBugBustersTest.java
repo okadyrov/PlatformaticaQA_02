@@ -1,26 +1,11 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
 import java.util.concurrent.TimeUnit;
 
-public class GroupBugBustersTest {
-
-    private WebDriver driver;
-
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-    }
+public class GroupBugBustersTest extends Utility{
 
     @Test
     public void testMK() throws InterruptedException {
@@ -47,7 +32,6 @@ public class GroupBugBustersTest {
         Thread.sleep(3000);
         WebElement price = driver.findElement(By.xpath("//label[@id='oneBitcoin']"));
         Assert.assertEquals(price.getText(), driver.getTitle().substring(1, 9));
-        Thread.sleep(3000);
     }
 
     @Test
@@ -83,10 +67,10 @@ public class GroupBugBustersTest {
         Assert.assertTrue(result, "Logo is here");
     }
 
-
     @Test
     public void testRomanB() throws InterruptedException {
-
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
         driver.get("https://www.homedepot.com/");
 
         WebElement input = driver.findElement(By.id("headerSearch"));
@@ -97,7 +81,6 @@ public class GroupBugBustersTest {
 
         Assert.assertTrue(finder.getText().toLowerCase().contains("aluminum angle"));
         Thread.sleep(1000);
-
         }
     
   @Test
@@ -113,21 +96,94 @@ public class GroupBugBustersTest {
 
         WebElement AppleStock = driver.findElement(By.className("symbol-page-header__name"));
         Assert.assertEquals(AppleStock.getText(), "Apple Inc. Common Stock (AAPL)");
-
     }
 
     @Test
     public void testTimYoshi() {
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
         driver.get("https://www.lamborghini.com/en-en");
         driver.findElement(By.linkText("MODELS")).click();
         WebElement lambo = driver.findElement(By.xpath("/html/body/div/div[1]/div/section[2]/div[2]/div[2]/div[1]/div/div/div/div[2]/div[2]/div/div[3]/a/span"));
         Assert.assertEquals(lambo.getText(),"AVENTADOR SVJ");
 
     }
-
-    @AfterMethod
-    public void afterTest() {
-        driver.quit();
+    
+    private void newClick(WebElement checkBoxValue1) {
+        JavascriptExecutor executor1 = (JavascriptExecutor) driver;
+        executor1.executeScript("arguments[0].click();", checkBoxValue1);
     }
 
+    @Test
+    public void testYevgeniyaRudenko() throws InterruptedException {
+        driver.get("https://demoqa.com/automation-practice-form");
+        Thread.sleep(2000);
+
+        WebElement firstName = driver.findElement(By.id("firstName"));
+        firstName.sendKeys("Yevgeniya");
+        WebElement lastName = driver.findElement(By.id("lastName"));
+        lastName.sendKeys("Rudenko");
+        Thread.sleep(1000);
+
+        WebElement genderFemale = driver.findElement(By.xpath("//input[@name='gender'][@value='Female']"));
+        newClick(genderFemale);
+
+        WebElement mobilePhone = driver.findElement(By.xpath("//input[@id='userNumber']"));
+        mobilePhone.sendKeys("0123456789");
+
+        WebElement checkBoxValue1 = driver.findElement(By.xpath("//input[@type='checkbox'][@value=1]"));
+        newClick(checkBoxValue1);
+        Thread.sleep(2000);
+
+        WebElement address = driver.findElement(By.xpath("//textarea[@id='currentAddress']"));
+        address.sendKeys("11 Washington St., Seattle, WA, 56043");
+
+        newClick(driver.findElement(By.id("submit")));
+        Thread.sleep(2000);
+
+
+        WebElement formHeader = driver.findElement(By.id("example-modal-sizes-title-lg"));
+        Assert.assertEquals(formHeader.getText(),"Thanks for submitting the form");
+
+        WebElement firstNameLastName = driver.findElement(By.xpath("//tr[td='Student Name']/td[2]"));
+        Assert.assertEquals(firstNameLastName.getText(),"Yevgeniya Rudenko");
+
+        WebElement gender = driver.findElement(By.xpath("//tr[td='Gender']/td[2]"));
+        Assert.assertEquals(gender.getText(),"Female");
+
+        WebElement mobile = driver.findElement(By.xpath("//tr[td='Mobile']/td[2]"));
+        Assert.assertEquals(mobile.getText(), "0123456789");
+
+        WebElement hobby = driver.findElement(By.xpath("//tr[td='Hobbies']/td[2]"));
+        Assert.assertEquals(hobby.getText(), "Sports");
+
+        WebElement addressFull = driver.findElement(By.xpath("//tr[td='Address']/td[2]"));
+        Assert.assertEquals(addressFull.getText(), "11 Washington St., Seattle, WA, 56043");
+    }
+
+    @Test
+    public void testBzhumanova() {
+        driver.get("https://www.verywellhealth.com/");
+
+        driver.findElement(By.id("header-search-button_1-0")).click();
+        WebElement searchInput = driver.findElement(By.id("search-input"));
+        searchInput.sendKeys("acne\n");
+
+        WebElement featureBlockFinder = driver.findElement(By.xpath("/html/body/main/div[1]/section/div[2]/ul/li[1]"));
+        WebElement featureTitleFinder = featureBlockFinder.findElement(By.className("block__title"));
+        Assert.assertEquals(featureTitleFinder.getText(), "Tweens - Growth and Development");
+    }
+
+    @Test
+    public void testValeriiSarukhanov() {
+
+        driver.get("https://www.homedepot.com/");
+
+        WebElement input = driver.findElement(By.id("headerSearch"));
+        input.sendKeys("rose\n");
+
+        WebElement finder = driver.findElement(By.xpath("//span[@class ='product-pod__title__product']"));
+
+        Assert.assertTrue(finder.getText().toLowerCase().contains("rose"));
+    }
 }
