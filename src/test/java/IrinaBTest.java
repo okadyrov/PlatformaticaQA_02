@@ -31,6 +31,30 @@ public class IrinaBTest {
         Assert.assertEquals(actualResult.getText(), "Welcome to 99 Bottles of Beer");
     }
 
+    @Test
+    public void testIrinaB2() throws InterruptedException {
+        driver.get("https://us.etrade.com/home");
+
+        WebElement tradingMenuLink = driver.findElement(
+                By.xpath("//ul[@id='menu']/li/a/span[text()='Trading']"));
+        tradingMenuLink.click();
+        Thread.sleep(2000);
+
+        WebElement openAccountLinkText = driver.findElement(By.linkText("Open an account"));
+        openAccountLinkText.click();
+
+        Thread.sleep(2000);
+        WebElement chooseYourOption = driver.findElement(By.xpath("//input[@id='BROKERAGE']"));
+
+        Assert.assertTrue(chooseYourOption.isSelected());
+
+        driver.findElement(By.xpath("//div/button[text()='Continue']")).click();
+
+        WebElement chooseBrokerageAccountTypeText = driver.findElement(By.xpath("//div/h1"));
+
+        Assert.assertEquals(chooseBrokerageAccountTypeText.getText(), "Choose account type");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
