@@ -6,19 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class GroupSquirrelsTest {
-
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    private WebDriver driver;
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-    }
+public class GroupSquirrelsTest extends Utility {
 
     @Test
     public void nYerlan() {
@@ -56,10 +44,5 @@ public class GroupSquirrelsTest {
         WebElement isItInStock = driver.findElement(By.xpath("//*[@id='stock-status']/strong"));
         Thread.sleep(1000);
         Assert.assertEquals(isItInStock.getText(), "In Stock");
-    }
-
-    @AfterMethod
-    public void afterTest() {
-        driver.quit();
     }
 }
