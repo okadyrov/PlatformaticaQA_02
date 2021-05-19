@@ -1,47 +1,23 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+import base.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class GroupLetsDoItTest {
+public class GroupLetsDoItTest extends BaseTest {
 
-    private WebDriver driver;
-
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-    }
-
-    @Test
+   @Test
     public void viktoriiaMarushevskaTargetTest() throws InterruptedException {
-
-        driver.get("https://www.target.com/");
-
+        getDriver().get("https://www.target.com/");
         Thread.sleep(1000);
 
-        driver.findElement(By.id("search")).sendKeys("band aids");
-        driver.findElement(By.xpath("//button[text()='go']")).click();
+        getDriver().findElement(By.id("search")).sendKeys("band aids");
+        getDriver().findElement(By.xpath("//button[text()='go']")).click();
         Thread.sleep(1000);
-        driver.findElement(By.linkText("Assorted Sizes Flexible Fabric Bandages - 30ct - up & up™")).click();
 
-        Thread.sleep(3000);
+        getDriver().findElement(By.linkText("Assorted Sizes Flexible Fabric Bandages - 30ct - up & up™")).click();
+        Thread.sleep(5000);
 
-        String searchResultText = driver.findElement(By.xpath("//span[contains(text(), 'Assorted Sizes Flexible Fabric Bandages - 30ct - up & up™')]")).getText();
+        String searchResultText = getDriver().findElement(By.xpath("//span[contains(text(), 'Assorted Sizes Flexible Fabric Bandages - 30ct - up & up™')]")).getText();
         Assert.assertEquals(searchResultText, "Assorted Sizes Flexible Fabric Bandages - 30ct - up & up™");
-    }
-
-    @AfterTest
-    public void afterTest() {
-        driver.quit();
     }
 }

@@ -1,34 +1,36 @@
+package base;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-public class Utility {
+import java.util.concurrent.TimeUnit;
 
-    public WebDriver driver;
+public abstract class BaseTest {
 
-    public static void newClick (WebDriver driver, WebElement element) {
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript("arguments[0].click();", element);
-    }
+    private WebDriver driver;
 
     @BeforeClass
-    public void beforeClass() {
+    protected void beforeClass() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
-    public void beforeMethod() {
+    protected void beforeMethod() {
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
     @AfterMethod
-    public void afterMethod() {
+    protected void afterMethod() {
         driver.quit();
+    }
+
+    protected WebDriver getDriver() {
+        return driver;
     }
 }
