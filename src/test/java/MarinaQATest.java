@@ -1,30 +1,31 @@
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class MarinaQATest extends Utility{
+public class MarinaQATest extends BaseTest {
 
     @Test
     public void testMarinaQA() throws InterruptedException {
 
-        driver.get("https://us.etrade.com/");
+        getDriver().get("https://us.etrade.com/");
 
-        WebElement logOnMenuLink = driver.findElement(
+        WebElement logOnMenuLink = getDriver().findElement(
                 By.xpath("//div[@class='nav-desktop']/div/div/a[@aria-label='log on to etrade']"));
         logOnMenuLink.click();
         Thread.sleep(2000);
 
-        WebElement userIDField = driver.findElement(By.xpath("//input[@id='user_orig']"));
+        WebElement userIDField = getDriver().findElement(By.xpath("//input[@id='user_orig']"));
         userIDField.sendKeys("Tester1");
 
-        WebElement passWordField = driver.findElement(By.xpath("//div[@class='row']/div/div/input[@type='password']"));
+        WebElement passWordField = getDriver().findElement(By.xpath("//div[@class='row']/div/div/input[@type='password']"));
         passWordField.sendKeys("Privet!");
 
-        WebElement logOnField = driver.findElement(By.xpath("//button[@id='logon_button']"));
+        WebElement logOnField = getDriver().findElement(By.xpath("//button[@id='logon_button']"));
         logOnField.click();
 
-        WebElement errorMessage = driver.findElement(By.xpath("//div[@class='row']/div[@class='col-centered-4']/div[@class='universal-message universal-message-danger']"));
+        WebElement errorMessage = getDriver().findElement(By.xpath("//div[@class='row']/div[@class='col-centered-4']/div[@class='universal-message universal-message-danger']"));
         System.out.println(errorMessage.getText());
 
         Assert.assertEquals(errorMessage.getText(), "Sorry! We're having trouble logging you on right now.\n" +
