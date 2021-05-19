@@ -37,7 +37,7 @@ public class GroupBugBustersTest extends BaseTest {
     }
 
     @Test
-    public void testMikhailMir() throws InterruptedException {
+    public void testMikhailMir() {
         getDriver().get("https://www.wasserstrom.com/");
         String parentHandle = getDriver().getWindowHandle();
         getDriver().findElement(By.id("Header_GlobalLogin_signInQuickLink")).click();
@@ -49,14 +49,24 @@ public class GroupBugBustersTest extends BaseTest {
             }
         }
 
-        Thread.sleep(1000);
-        getDriver().findElement(By.id("Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1")).sendKeys("userWasserStrom");
-        getDriver().findElement(By.id("Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1")).sendKeys("WasserStrom4321!");
-        getDriver().findElement(By.id("Header_GlobalLogin_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1_img")).click();
-        getDriver().findElement(By.id("Header_GlobalLogin_WC_AccountDisplay_links_2")).click();
-        Thread.sleep(5000);
+        WebElement loginField = getDriver().findElement(By.id(
+                "Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1"));
+        loginField.sendKeys("userWasserStrom");
 
-        WebElement iconUser = getDriver().findElement(By.id("Header_GlobalLogin_signOutQuickLink"));
+        WebElement passwordField = getDriver().findElement(By.id(
+                "Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1"));
+        passwordField.sendKeys("WasserStrom4321!");
+
+        WebElement checkbox = getDriver().findElement(By.id(
+                "Header_GlobalLogin_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1_img"));
+        checkbox.click();
+
+        WebElement buttonSignIn = getDriver().findElement(By.id(
+                "Header_GlobalLogin_WC_AccountDisplay_links_2"));
+        buttonSignIn.click();
+
+        WebElement iconUser = getDriver().findElement(By.id(
+                "Header_GlobalLogin_signOutQuickLink"));
         Assert.assertTrue(iconUser.isDisplayed());
     }
 
