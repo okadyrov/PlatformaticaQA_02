@@ -42,7 +42,6 @@ public class OlgaKTest {
                 By.xpath("//form[@id='new_user']/button[contains(text(), 'Sign in')]"));
         signInButton.click();
 
-        Thread.sleep(2000);
         String errorText = driver.findElement(
                 By.cssSelector("div.alert-box.error.flash-msg.error")).getText();
 
