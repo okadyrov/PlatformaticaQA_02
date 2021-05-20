@@ -16,11 +16,10 @@ public class IrinaBTest extends BaseTest {
     }
 
     @Test
-    public void testIrinaB2() throws InterruptedException {
+    public void testIrinaB2() throws {
         getDriver().get("https://us.etrade.com/home");
 
-        WebElement tradingMenuLink = getDriver().findElement(
-                By.xpath("//ul[@id='menu']/li/a/span[text()='Trading']"));
+        WebElement tradingMenuLink = getDriver().findElement(By.xpath("//ul[@id='menu']/li/a/span[text()='Trading']"));      
         tradingMenuLink.click();
 
         WebElement openAccountLinkText = getDriver().findElement(By.linkText("Open an account"));
