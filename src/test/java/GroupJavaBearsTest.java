@@ -50,4 +50,12 @@ public class GroupJavaBearsTest extends BaseTest {
         Assert.assertTrue(getDriver().findElement(By.className("js-movie-video-link")).isDisplayed());
     }
 
+    @Test
+    public  void testNataliaGrebeniuk() throws InterruptedException {
+        getDriver().get("https://google.com/");
+        WebElement input = getDriver().findElement(By.className("gLFyf"));
+        input.sendKeys("123\n");
+        WebElement result = getDriver().findElement(By.className("MMgsKf"));
+        Assert.assertEquals(result.getText(), "Jess Glynne - 123 [Official Live Video] - YouTube");
+    }
 }
