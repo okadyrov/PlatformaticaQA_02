@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class IrinaBTest extends BaseTest {
 
     @Test
-    public void testIrinaB(){
+    public void testIrinaB() {
         getDriver().get("http://www.99-bottles-of-beer.net/");
 
         WebElement actualResult = getDriver().findElement(By.xpath("//div[@id='main']/h2"));
