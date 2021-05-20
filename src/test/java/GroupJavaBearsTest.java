@@ -58,4 +58,14 @@ public class GroupJavaBearsTest extends BaseTest {
         WebElement result = getDriver().findElement(By.className("MMgsKf"));
         Assert.assertEquals(result.getText(), "Jess Glynne - 123 [Official Live Video] - YouTube");
     }
+
+    @Test
+    public void testYaraGrats() {
+        getDriver().get("https://keepcalling.com/");
+        WebElement countryInput = getDriver().findElement(By.xpath("//input[@id = 'destination']"));
+        countryInput.sendKeys("Russia\n");
+        WebElement countryRate = getDriver().findElement(By
+                .xpath("//p[contains(@class,'h3 rate-top text-left')and contains(text(),'Russia')]"));
+        Assert.assertEquals(countryRate.getText(),"Russia");
+    }
 }
