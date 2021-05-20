@@ -109,10 +109,9 @@ public class GroupBreakingBadJavaTest {
         driver.get("https://lafitness.com/Pages/Default.aspx#");
 
         WebElement element = driver.findElement(By.id("ctl00_GlobalHeader_txtZip"));
-        element.click();
-        element.clear();
         element.sendKeys("20878\n");
         WebElement clubName = driver.findElement(By.id("ctl00_MainContent_repClubInfo_ctl01_lblClubDisplayName"));
+
         Assert.assertEquals(clubName.getText(), "Gaithersburg - Copley Place");
     }
 
@@ -142,6 +141,22 @@ public class GroupBreakingBadJavaTest {
         WebElement tripTitle = driver.findElement(By.className("ngs-exp-search--facet-header"));
         Thread.sleep(300);
         Assert.assertEquals(tripTitle.getText(), "Find a Trip");
+    }
+
+    @Test
+    public void vadymKarpychTest() {
+        driver.get("https://www.wholefoodsmarket.com/");
+
+        WebElement input = driver.findElement(By.xpath("//span[contains(text(),'Find a Store')]"));
+        input.click();
+
+        WebElement input2 = driver.findElement(By.id("store-finder-search-bar"));
+        input2.sendKeys("Sacramento");
+        input2.click();
+
+        WebElement output = driver.findElement(By.xpath("//a[contains(text(),'Sacramento')]"));
+
+        Assert.assertEquals(output.getText(), "Sacramento");
     }
 
     @AfterMethod

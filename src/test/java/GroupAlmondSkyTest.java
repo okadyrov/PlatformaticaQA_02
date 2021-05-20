@@ -1,3 +1,4 @@
+import base.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,37 +10,27 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class GroupAlmondSkyTest {
-
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    private WebDriver driver;
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-    }
+public class GroupAlmondSkyTest extends BaseTest {
 
     @Test
-    public void tatianaChuevaTest() throws InterruptedException {
+    public void testTatianaChueva() throws InterruptedException {
 
-        String expectedResultPageHeader = "CONTACT US";
+        final String expectedResultPageHeader = "CONTACT US";
 
-        driver.get("https://www.loganparkapartments.com/");
+        getDriver().get("https://www.loganparkapartments.com/");
 
-        WebElement popButtonClose = driver.findElement(By.xpath("//a[@id='popBtnClose']"));
+        WebElement popButtonClose = getDriver().findElement(By.xpath("//a[@id='popBtnClose']"));
         popButtonClose.click();
 
-        WebElement pushMenu = driver.findElement(By.xpath("//div[@id='menuHeader']"));
+        WebElement pushMenu = getDriver().findElement(By.xpath("//div[@id='menuHeader']"));
         pushMenu.click();
         Thread.sleep(3000);
-        WebElement inputContactButton = driver.findElement(By.xpath("//div[@id='mainNavHeader']/ul[@id='menuElem']/li[@class='contact']/a[@href='/Contact.aspx']"));
+
+        WebElement inputContactButton = getDriver().findElement(
+                By.xpath("//div[@id='mainNavHeader']/ul[@id='menuElem']/li[@class='contact']/a[@href='/Contact.aspx']"));
         inputContactButton.click();
 
-        WebElement pageHeader = driver.findElement(By.xpath("//h1[@class='pageHeader']"));
+        WebElement pageHeader = getDriver().findElement(By.xpath("//h1[@class='pageHeader']"));
         String actualResultPageHeader = pageHeader.getText();
 
         Assert.assertEquals(actualResultPageHeader, expectedResultPageHeader);
@@ -47,18 +38,13 @@ public class GroupAlmondSkyTest {
 
     @Test
     public void testLizaSh() {
-        driver.get("https://www.cactusandtropicals.com/");
+        getDriver().get("https://www.cactusandtropicals.com/");
 
-        WebElement button = driver.findElement(By.xpath("//a[text()='View our services.']"));
+        WebElement button = getDriver().findElement(By.xpath("//a[text()='View our services.']"));
         button.click();
 
-        WebElement result = driver.findElement(By.className("page-title"));
+        WebElement result = getDriver().findElement(By.className("page-title"));
 
         Assert.assertEquals(result.getText(), "PLANT SERVICES");
-    }
-
-    @AfterMethod
-    public void afterTest() {
-        driver.quit();
     }
 }
