@@ -1,16 +1,13 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 
-public class GroupBreakingBadJavaTest {
-
-    private WebDriver driver;
+public class GroupBreakingBadJavaTest extends BaseTest {
 
     public static void newScroll(WebDriver driver, WebElement element) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -36,69 +33,56 @@ public class GroupBreakingBadJavaTest {
         }
     }
 
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
-
     @Test
     public void testDudeAlexSoccer() {
-        driver.get("https://services.smartbear.com/samples/TestComplete14/smartstore/");
-        WebElement elemSoccer = driver.findElement(By.xpath("//*[@title='Soccer']"));
-        flash(elemSoccer, driver);
-        driver.findElement(By.xpath("//*[@title='Soccer']")).click();
+        getDriver().get("https://services.smartbear.com/samples/TestComplete14/smartstore/");
+        WebElement elemSoccer = getDriver().findElement(By.xpath("//*[@title='Soccer']"));
+        flash(elemSoccer, getDriver());
+        getDriver().findElement(By.xpath("//*[@title='Soccer']")).click();
 
-        WebElement elem = driver.findElement(By.id("content-center"))
+        WebElement elem = getDriver().findElement(By.id("content-center"))
                                 .findElement(By.tagName("h1"));
-        flash(elem, driver);
+        flash(elem, getDriver());
         Assert.assertEquals(elem.getText(), "Soccer");
     }
 
     @Test
     public void testDudeAlexSoccerFlash() {
-        driver.get("https://services.smartbear.com/samples/TestComplete14/smartstore/");
-        WebElement elemSoccer = driver.findElement(By.xpath("//*[@title='Soccer']"));
-        flash(elemSoccer, driver);
+        getDriver().get("https://services.smartbear.com/samples/TestComplete14/smartstore/");
+        WebElement elemSoccer = getDriver().findElement(By.xpath("//*[@title='Soccer']"));
+        flash(elemSoccer, getDriver());
         elemSoccer.click();
 
-        WebElement elem = driver.findElement(By.id("content-center"))
+        WebElement elem = getDriver().findElement(By.id("content-center"))
                                 .findElement(By.tagName("h1"));
-        flash(elem, driver);
+        flash(elem, getDriver());
         Assert.assertEquals(elem.getText(), "Soccer");
     }
 
     @Test
-    public void testDariaRazzhigaeva() throws InterruptedException {
-        driver.get("https://arc.losrios.edu/");
-        driver.findElement(By.linkText("About Us")).click();
+    public void testDariaRazzhigaeva(){
+        getDriver().get("https://arc.losrios.edu/");
+        getDriver().findElement(By.linkText("About Us")).click();
 
-        Thread.sleep(1000);
+        WebElement element = getDriver().findElement(By.linkText("Contact Us"));
+        newScroll(getDriver(), element);
 
-        WebElement element = driver.findElement(By.linkText("Contact Us"));
-        newScroll(driver, element);
-
-        WebElement address = driver.findElement(By.className("address_link"));
+        WebElement address = getDriver().findElement(By.className("address_link"));
         Assert.assertTrue(address.getText().contains("4700 College Oak Drive"));
     }
 
     @Test
     public void testVitaliiArtemenkoFood() {
-        driver.get("https://lightlife.com/");
-        driver.findElement(By.xpath("//a[text()='Our Food'][1]")).click();
-        WebElement food = driver.findElement(By.tagName("h1"));
+        getDriver().get("https://lightlife.com/");
+        getDriver().findElement(By.xpath("//a[text()='Our Food'][1]")).click();
+        WebElement food = getDriver().findElement(By.tagName("h1"));
         Assert.assertEquals(food.getText(), "Our Food");
     }
 
     @Test
     public void testEvgeniyTMainGitCommand() {
-        driver.get("https://use-web.ru/news.php?id=138&tid=3");
-        WebElement result = driver.findElement(By.xpath("//h2[text()= 'Основные Git команды. ']"));
+        getDriver().get("https://use-web.ru/news.php?id=138&tid=3");
+        WebElement result = getDriver().findElement(By.xpath("//h2[text()= 'Основные Git команды. ']"));
 
         Assert.assertEquals(result.getText(), "Основные Git команды.");
     }
@@ -106,61 +90,55 @@ public class GroupBreakingBadJavaTest {
     @Test
     public void testLenaDik(){
 
-        driver.get("https://lafitness.com/Pages/Default.aspx#");
+        getDriver().get("https://lafitness.com/Pages/Default.aspx#");
 
-        WebElement element = driver.findElement(By.id("ctl00_GlobalHeader_txtZip"));
+        WebElement element = getDriver().findElement(By.id("ctl00_GlobalHeader_txtZip"));
         element.sendKeys("20878\n");
-        WebElement clubName = driver.findElement(By.id("ctl00_MainContent_repClubInfo_ctl01_lblClubDisplayName"));
+        WebElement clubName = getDriver().findElement(By.id("ctl00_MainContent_repClubInfo_ctl01_lblClubDisplayName"));
 
         Assert.assertEquals(clubName.getText(), "Gaithersburg - Copley Place");
     }
 
+    @Ignore
     @Test
-    public void testAntonBrutTrip() throws InterruptedException {
-        driver.get("https://www.nationalgeographic.com/");
+    public void testAntonBrutTrip() {
+        getDriver().get("https://www.nationalgeographic.com/");
 
-        driver.findElement(By.xpath("//button[@aria-label='Menu']")).click();
-        driver.findElement(By.xpath("//a[contains(text(), 'Book A Trip')]")).click();
+        getDriver().findElement(By.xpath("//button[@aria-label='Menu']")).click();
+        getDriver().findElement(By.xpath("//a[contains(text(), 'Book A Trip')]")).click();
 
-        driver.findElement(By.xpath("//div/span[contains(text(), 'Destination')]")).click();
-        WebElement northAmerica = driver.findElement(By.id("react-select-2--option-9"));
+        getDriver().findElement(By.xpath("//div/span[contains(text(), 'Destination')]")).click();
+        WebElement northAmerica = getDriver().findElement(By.id("react-select-2--option-9"));
         northAmerica.click();
 
-        driver.findElement(By.xpath("//div/span[contains(text(), 'Trip Type')]")).click();
-        Thread.sleep(750);
-        WebElement train = driver.findElement(By.id("react-select-3--option-6"));
+        getDriver().findElement(By.xpath("//div/span[contains(text(), 'Trip Type')]")).click();
+        WebElement train = getDriver().findElement(By.id("react-select-3--option-6"));
         train.click();
 
-        driver.findElement(By.xpath("//div/span[contains(text(), 'Departure Month')]")).click();
-        Thread.sleep(750);
-        WebElement august2021 = driver.findElement(By.id("react-select-4--option-1"));
+        getDriver().findElement(By.xpath("//div/span[contains(text(), 'Departure Month')]")).click();
+        WebElement august2021 = getDriver().findElement(By.id("react-select-4--option-1"));
         august2021.click();
 
-        driver.findElement(By.xpath("//span[contains(text(), 'Search Trips')]")).click();
+        getDriver().findElement(By.xpath("//span[contains(text(), 'Search Trips')]")).click();
 
-        WebElement tripTitle = driver.findElement(By.className("ngs-exp-search--facet-header"));
-        Thread.sleep(300);
+        WebElement tripTitle = getDriver().findElement(By.className("ngs-exp-search--facet-header"));
         Assert.assertEquals(tripTitle.getText(), "Find a Trip");
     }
 
+    @Ignore
     @Test
     public void vadymKarpychTest() {
-        driver.get("https://www.wholefoodsmarket.com/");
+        getDriver().get("https://www.wholefoodsmarket.com/");
 
-        WebElement input = driver.findElement(By.xpath("//span[contains(text(),'Find a Store')]"));
+        WebElement input = getDriver().findElement(By.xpath("//span[contains(text(),'Find a Store')]"));
         input.click();
 
-        WebElement input2 = driver.findElement(By.id("store-finder-search-bar"));
+        WebElement input2 = getDriver().findElement(By.id("store-finder-search-bar"));
         input2.sendKeys("Sacramento");
         input2.click();
 
-        WebElement output = driver.findElement(By.xpath("//a[contains(text(),'Sacramento')]"));
+        WebElement output = getDriver().findElement(By.xpath("//a[contains(text(),'Sacramento')]"));
 
         Assert.assertEquals(output.getText(), "Sacramento");
-    }
-
-    @AfterMethod
-    public void afterTest() {
-        driver.quit();
     }
 }
