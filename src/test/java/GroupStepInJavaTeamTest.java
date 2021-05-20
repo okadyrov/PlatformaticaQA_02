@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class GroupStepInJavaTeamTest extends BaseTest {
@@ -132,4 +133,59 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(result.getText(), "You Searched for \"MEAT\"");
     }
 
+    @Test
+    public void testNataliaBoiko() throws InterruptedException {
+        getDriver().get("https://akniga.org/");
+        List<WebElement> listOfAllLinks = getDriver().findElements(By.xpath("/html/body/main/div[3]/div[1]/div/a"));
+        Random random = new Random();
+        int NumberOfrandomCategory = random.nextInt(listOfAllLinks.size());
+        String NameOfCategory = listOfAllLinks.get(NumberOfrandomCategory).getText().toLowerCase();
+        listOfAllLinks.get(NumberOfrandomCategory).click();
+        if (getDriver().getCurrentUrl().contains("google")) {
+            getDriver().get(listOfAllLinks.get(NumberOfrandomCategory).getAttribute("href"));
+            Thread.sleep(500);
+        }
+        Assert.assertTrue(getDriver().findElement(By.tagName("h1")).getText().toLowerCase().contains(NameOfCategory));
+        getDriver().findElement(By.xpath("/html/body/main/div[1]/div[4]/div[1]/div/a[2]")).click();
+        Thread.sleep(1000);
+        List<WebElement> listOfResult = getDriver().findElements(By.className("content__main__articles--item"));
+        int Counter = 0;
+        for (WebElement el : listOfResult) {
+            int CurrentScore = 0;
+            try {
+                CurrentScore = Integer.parseInt(el.findElement(By.className("ls-vote-item-up")).getText());
+            } catch (Exception e) {
+            }
+            try {
+                CurrentScore -= Integer.parseInt(el.findElement(By.className("ls-vote-item-down")).getText());
+            } catch (Exception e) {
+            }
+            if (Counter == 0) Counter = CurrentScore;
+            try {
+                Assert.assertTrue(Counter >= CurrentScore);
+            } catch (AssertionError e) {
+                System.out.println("Error: " + el.findElement(By.className("caption__article-main")).getText());
+            }
+            Counter = CurrentScore;
+        }
+        getDriver().findElement(By.xpath("/html/body/main/div[1]/div[4]/div[1]/div/a[3]")).click();
+        Thread.sleep(1000);
+        listOfResult = getDriver().findElements(By.className("content__main__articles--item"));
+        Counter = 0;
+        for (WebElement el : listOfResult) {
+            String textComments = el.findElement(By.className("link__action--comment")).getText();
+            int CurrentScore = 0;
+            try {
+                CurrentScore = Integer.parseInt(textComments.substring(0, textComments.indexOf(" ")));
+            } catch (Exception e) {
+            }
+            if (Counter == 0) Counter = CurrentScore;
+            try {
+                Assert.assertTrue(Counter >= CurrentScore);
+            } catch (AssertionError e) {
+                System.out.println("Error: " + el.findElement(By.className("caption__article-main")).getText());
+            }
+            Counter = CurrentScore;
+        }
+    }
 }

@@ -1,71 +1,71 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+import base.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class GroupJavaBearsTest {
-
-    private WebDriver driver;
-
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-    }
+public class GroupJavaBearsTest extends BaseTest {
 
     @Test
     public void testMariaMorozova() {
-        driver.get("https://www.duckduckgo.com");
+        getDriver().get("https://www.duckduckgo.com");
 
-        WebElement input = driver.findElement(By.className("search__input--adv"));
+        WebElement input = getDriver().findElement(By.className("search__input--adv"));
         input.sendKeys("panda\n");
 
-        WebElement res = driver.findElement(By.xpath("//*[@id=\"r1-0\"]/div/h2/a[1]"));
+        WebElement res = getDriver().findElement(By.xpath("//*[@id=\"r1-0\"]/div/h2/a[1]"));
         Assert.assertEquals(res.getText(), "Panda Express | A Fast Casual Chinese Restaurant | Panda ...");
     }
 
     @Test
     public void testSergeyKuznetsov() {
-        driver.get("https://elibrary.unatlib.ru/");
-        WebElement input = driver.findElement(By.className("prompt"));
+        getDriver().get("https://elibrary.unatlib.ru/");
+        WebElement input = getDriver().findElement(By.className("prompt"));
         input.sendKeys("Пушкин\n");
-        WebElement result = driver.findElement(By.className("search-stats"));
+        WebElement result = getDriver().findElement(By.className("search-stats"));
         Assert.assertNotEquals(result.getText(), "No Results!");
     }
 
     @Test
     public void testAnastasiiaPotapenko() {
-        driver.get("https://www.nps.gov/findapark/index.htm");
+        getDriver().get("https://www.nps.gov/findapark/index.htm");
 
-        WebElement searchIconButton = driver.findElement(By.xpath("//button[@class = 'multiselect dropdown-toggle btn btn-default']"));
+        WebElement searchIconButton = getDriver().findElement(By.xpath("//button[@class = 'multiselect dropdown-toggle btn btn-default']"));
         searchIconButton.click();
-        WebElement searchField = driver.findElement(By.xpath("//input[@class = 'form-control multiselect-search']"));
+        WebElement searchField = getDriver().findElement(By.xpath("//input[@class = 'form-control multiselect-search']"));
         searchField.sendKeys("Yellowstone National Park\n");
-        WebElement searchResult = driver.findElement(By.xpath("//li//label[text() = ' Yellowstone National Park']"));
+        WebElement searchResult = getDriver().findElement(By.xpath("//li//label[text() = ' Yellowstone National Park']"));
         searchResult.click();
-        Assert.assertTrue(driver.findElement(By.xpath("//a[text() = 'Yellowstone' and @class = 'Hero-title ']")).isDisplayed());
+        Assert.assertTrue(getDriver().findElement(By.xpath("//a[text() = 'Yellowstone' and @class = 'Hero-title ']")).isDisplayed());
     }
 
     @Test
     public void testAlexMack() {
-        driver.get("https://www.fandango.com/");
+        getDriver().get("https://www.fandango.com/");
 
-        WebElement searchField = driver.findElement(By.className("fan-input"));
+        WebElement searchField = getDriver().findElement(By.className("fan-input"));
         searchField.sendKeys("nobody\n");
-        WebElement movie = driver.findElement(By.className("results-thumb"));
+        WebElement movie = getDriver().findElement(By.className("results-thumb"));
         movie.click();
-        Assert.assertTrue(driver.findElement(By.className("js-movie-video-link")).isDisplayed());
+        Assert.assertTrue(getDriver().findElement(By.className("js-movie-video-link")).isDisplayed());
     }
 
-    @AfterMethod
-    public void afterTest() {
-        driver.quit();
+    @Test
+    public  void testNataliaGrebeniuk() throws InterruptedException {
+        getDriver().get("https://google.com/");
+        WebElement input = getDriver().findElement(By.className("gLFyf"));
+        input.sendKeys("123\n");
+        WebElement result = getDriver().findElement(By.className("MMgsKf"));
+        Assert.assertEquals(result.getText(), "Jess Glynne - 123 [Official Live Video] - YouTube");
+    }
+
+    @Test
+    public void testYaraGrats() {
+        getDriver().get("https://keepcalling.com/");
+        WebElement countryInput = getDriver().findElement(By.xpath("//input[@id = 'destination']"));
+        countryInput.sendKeys("Russia\n");
+        WebElement countryRate = getDriver().findElement(By
+                .xpath("//p[contains(@class,'h3 rate-top text-left')and contains(text(),'Russia')]"));
+        Assert.assertEquals(countryRate.getText(),"Russia");
     }
 }
