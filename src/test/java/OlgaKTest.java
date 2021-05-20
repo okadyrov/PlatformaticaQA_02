@@ -24,7 +24,7 @@ public class OlgaKTest {
     }
 
     @Test
-    public void testOlgaKovtun() throws InterruptedException {
+    public void testOlgaKovtun() {
 
         driver.get("https://www.codewars.com/");
 
