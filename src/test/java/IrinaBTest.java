@@ -16,7 +16,7 @@ public class IrinaBTest extends BaseTest {
     }
 
     @Test
-    public void testIrinaB2() throws {
+    public void testIrinaB2() {
         getDriver().get("https://us.etrade.com/home");
 
         WebElement tradingMenuLink = getDriver().findElement(By.xpath("//ul[@id='menu']/li/a/span[text()='Trading']"));      
