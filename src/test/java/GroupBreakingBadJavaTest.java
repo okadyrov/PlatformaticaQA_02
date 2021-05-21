@@ -5,14 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import utils.TestUtils;
 
 
 public class GroupBreakingBadJavaTest extends BaseTest {
-
-    public static void newScroll(WebDriver driver, WebElement element) {
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].scrollIntoView();", element);
-    }
 
     public static void flash(WebElement element, WebDriver driver) {
         String bgcolor = element.getCssValue("backgroundColor");
@@ -65,7 +61,7 @@ public class GroupBreakingBadJavaTest extends BaseTest {
         getDriver().findElement(By.linkText("About Us")).click();
 
         WebElement element = getDriver().findElement(By.linkText("Contact Us"));
-        newScroll(getDriver(), element);
+        TestUtils.scroll(getDriver(), element);
 
         WebElement address = getDriver().findElement(By.className("address_link"));
         Assert.assertTrue(address.getText().contains("4700 College Oak Drive"));
