@@ -1,17 +1,13 @@
 import base.BaseTest;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
 public class KorikUmanTest extends BaseTest {
 
-    @Ignore
     @Test
-    public void testOneVkorenevskyy() throws InterruptedException {
+    public void testOneVkorenevskyy() {
 
         getDriver().get("https://ultimateqa.com/");
 
@@ -22,9 +18,10 @@ public class KorikUmanTest extends BaseTest {
         Assert.assertTrue(result);
     }
 
-    @Ignore
     @Test
-    public void testTwoVkorenevskyy() throws InterruptedException {
+    public void testTwoVkorenevskyy() {
+
+        getDriver().get("https://ultimateqa.com/");
 
         WebElement searchField = getDriver().findElement(By.xpath("//*[@name='s'][@class='et_pb_s']"));
 
