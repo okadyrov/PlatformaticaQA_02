@@ -2,10 +2,12 @@ import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class GroupRunSuccessTest extends BaseTest {
 
+    @Ignore
     @Test
     public void testDimaStepanenko() throws InterruptedException {
         getDriver().get("http://demowebshop.tricentis.com/");

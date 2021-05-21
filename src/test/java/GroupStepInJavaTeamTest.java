@@ -19,6 +19,7 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(getDriver().findElement(By.tagName("h1")).getText(), "Web element");
     }
 
+    @Ignore
     @Test
     public void testMarianaLuchynets() {
 
@@ -46,6 +47,7 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(result.getText(), value);
     }
 
+    @Ignore
     @Test
     public void testAleksAn() {
         getDriver().get("http://automationpractice.com/index.php");
@@ -128,6 +130,7 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(result.getText(), "You Searched for \"MEAT\"");
     }
 
+    @Ignore
     @Test
     public void testNataliaBoiko() throws InterruptedException {
         getDriver().get("https://akniga.org/");

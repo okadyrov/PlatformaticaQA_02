@@ -78,6 +78,7 @@ public class GroupAllaTest  extends BaseTest {
                 "Неверное имя пользователя или пароль");
     }
 
+    @Ignore
     @Test
     public void vladimirMiskoTest() {
 
