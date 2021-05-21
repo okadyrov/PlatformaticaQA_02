@@ -1,3 +1,4 @@
+import base.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.Assert;
 import org.openqa.selenium.By;
@@ -6,18 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
-public class OlesiaAbdullinaTest {
-
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-    private WebDriver driver;
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-    }
+public class OlesiaAbdullinaTest extends BaseTest {
 
     @Ignore
     @Test
@@ -33,10 +23,5 @@ public class OlesiaAbdullinaTest {
 
         WebElement searchResult = driver.findElement(By.id("contents"));
         Assert.assertTrue(searchResult != null);
-    }
-
-    @AfterMethod
-    public void afterTest() {
-        driver.quit();
     }
 }
