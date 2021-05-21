@@ -8,14 +8,13 @@ public class MarinaQATest extends BaseTest {
 
     @Ignore
     @Test
-    public void testMarinaQA() throws InterruptedException {
+    public void testMarinaQA() {
 
         getDriver().get("https://us.etrade.com/");
 
         WebElement logOnMenuLink = getDriver().findElement(
                 By.xpath("//div[@class='nav-desktop']/div/div/a[@aria-label='log on to etrade']"));
         logOnMenuLink.click();
-        Thread.sleep(2000);
 
         WebElement userIDField = getDriver().findElement(By.xpath("//input[@id='user_orig']"));
         userIDField.sendKeys("Tester1");
