@@ -1,12 +1,14 @@
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class GroupLetsDoItTest extends BaseTest {
 
-   @Test
-    public void viktoriiaMarushevskaTargetTest()  {
+    @Ignore
+    @Test
+    public void viktoriiaMarushevskaTargetTest() {
         getDriver().manage().deleteAllCookies();
         getDriver().get("https://www.target.com/");
 

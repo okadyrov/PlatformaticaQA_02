@@ -1,17 +1,17 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class OlesiaAbdullinaTest {
-
+public class YakovGTest {
     @BeforeClass
     public void before() {
         WebDriverManager.chromedriver().setup();
     }
+
     private WebDriver driver;
 
     @BeforeMethod
@@ -21,18 +21,15 @@ public class OlesiaAbdullinaTest {
 
     @Ignore
     @Test
-    public void testOlesiaAbdullina() {
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://www.youtube.com/");
+    public void test() {
+        driver.get("https://www.sportsmans.com/");
 
-        WebElement search = driver.findElement(By.xpath("//input[@id='search']"));
-        search.sendKeys("russian songs");
+        WebElement input = driver.findElement(By.id("js-site-search-input"));
+        input.sendKeys("FN Five SeveN Pistol\n");
 
-        WebElement searchButton = driver.findElement(By.xpath("//*[@id='search-icon-legacy']"));
-        searchButton.click();
+        WebElement result = driver.findElement(By.xpath("//h2/a[@data-product-id=\"p41796\"]"));
 
-        WebElement searchResult = driver.findElement(By.id("contents"));
-        Assert.assertTrue(searchResult != null);
+        Assert.assertEquals(result.getText(), "FN Five SeveN Pistol");
     }
 
     @AfterMethod

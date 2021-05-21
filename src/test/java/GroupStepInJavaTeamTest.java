@@ -1,15 +1,11 @@
 import base.BaseTest;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class GroupStepInJavaTeamTest extends BaseTest {
 
@@ -23,6 +19,7 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(getDriver().findElement(By.tagName("h1")).getText(), "Web element");
     }
 
+    @Ignore
     @Test
     public void testMarianaLuchynets() {
 
@@ -37,21 +34,20 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(possibleSideEffectsText.getText(), "To reduce pain and discomfort where you got the shot");
     }
 
+    @Ignore
     @Test
     public void testVitalyZverev() {
 
-        String value = "Selenium";
+        final String value = "Selenium";
 
         getDriver().get("https://ya.ru/");
-
-        WebElement input = getDriver().findElement(By.xpath("//span[@class='input__box']/input"));
-        input.sendKeys(value + "\n");
-
+        getDriver().findElement(By.xpath("//span[@class='input__box']/input")).sendKeys(value + "\n");
         WebElement result = getDriver().findElement(By.xpath("//div[contains(@class, 'serp-title_font')]"));
 
         Assert.assertEquals(result.getText(), value);
     }
 
+    @Ignore
     @Test
     public void testAleksAn() {
         getDriver().get("http://automationpractice.com/index.php");
@@ -75,6 +71,7 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(text, "PayPal is a secure, easy way to pay and get paid - sign up for free");
     }
 
+    @Ignore
     @Test
     public void testHaidukLibrary() {
         getDriver().get("https://www.merriam-webster.com/");
@@ -133,6 +130,7 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(result.getText(), "You Searched for \"MEAT\"");
     }
 
+    @Ignore
     @Test
     public void testNataliaBoiko() throws InterruptedException {
         getDriver().get("https://akniga.org/");

@@ -5,10 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.List;
 
@@ -25,6 +22,7 @@ public class sergeoReviewTest {
         driver = new ChromeDriver();
     }
 
+    @Ignore
     @Test
     public void reviewTest () throws InterruptedException {
         driver.get("http://shop.demoqa.com/my-account/");
@@ -44,6 +42,7 @@ public class sergeoReviewTest {
         JavascriptExecutor executor = (JavascriptExecutor)driver;
         executor.executeScript("arguments[0].click();", element);
     }
+    @Ignore
     @Test
     public void newTest2 () throws InterruptedException {
         driver.get("https://demoqa.com/automation-practice-form");

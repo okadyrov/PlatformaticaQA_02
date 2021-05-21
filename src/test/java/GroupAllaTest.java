@@ -2,6 +2,7 @@ import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 
@@ -24,6 +25,7 @@ public class GroupAllaTest  extends BaseTest {
 
     }
 
+    @Ignore
     @Test
     public void testGunchenkoAlex() {
 
@@ -45,6 +47,7 @@ public class GroupAllaTest  extends BaseTest {
         Assert.assertEquals(pageTitleName, "Погода в аэропорту Харьков на месяц");
     }
 
+    @Ignore
     @Test
     public void testSherstnevaHanna() {
         getDriver().get("https://www.tut.by/");
@@ -53,6 +56,7 @@ public class GroupAllaTest  extends BaseTest {
         Assert.assertFalse(result);
     }
 
+    @Ignore
     @Test
     public void testIgorChupin() throws InterruptedException {
 
@@ -74,6 +78,7 @@ public class GroupAllaTest  extends BaseTest {
                 "Неверное имя пользователя или пароль");
     }
 
+    @Ignore
     @Test
     public void vladimirMiskoTest() {
 
@@ -87,6 +92,19 @@ public class GroupAllaTest  extends BaseTest {
                 By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div/div[1]/a/h3"));
 
         Assert.assertEquals(result.getText(), "Белорусский портал TUT.BY. Новости Беларуси и мира");
+    }
+
+    @Test
+    public  void testJuliaKnyazeva() {
+
+        getDriver().get("https://software-testing.ru/");
+
+        WebElement input = getDriver().findElement(By.xpath("//a[@href='/library']"));
+        input.click();
+
+        WebElement result = getDriver().findElement(By.xpath("//a[@href='/library/testing/" +
+                "testing-for-beginners?layout=default']"));
+        Assert.assertEquals(result.getText(), "Начинающему тестировщику");
     }
 
 }

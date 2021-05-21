@@ -1,6 +1,8 @@
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import utils.TestUtils;
@@ -10,9 +12,8 @@ import java.util.concurrent.TimeUnit;
 public class GroupBugBustersTest extends BaseTest {
 
     @Test
-    public void testMK() throws InterruptedException {
+    public void testMK() {
         getDriver().get("https://www.dillards.com/");
-        Thread.sleep(3000);
         getDriver().findElement(By.id("topcat_Kids")).click();
         WebElement result = getDriver().findElement(By.linkText("Girls"));
         Assert.assertTrue(result.isDisplayed());
@@ -28,10 +29,10 @@ public class GroupBugBustersTest extends BaseTest {
         Assert.assertEquals(phone.getText(), "1 (866) 473-7222");
     }
 
+    @Ignore
     @Test
-    public void testAndreyTeterin() throws InterruptedException {
+    public void testAndreyTeterin() {
         getDriver().get("https://www.btcsatoshi.com/");
-        Thread.sleep(3000);
         WebElement price = getDriver().findElement(By.xpath("//label[@id='oneBitcoin']"));
         Assert.assertEquals(price.getText(), getDriver().getTitle().substring(1, 9));
     }
@@ -79,23 +80,23 @@ public class GroupBugBustersTest extends BaseTest {
         Assert.assertTrue(result, "Logo is here");
     }
 
+    @Ignore
     @Test
-    public void testRomanB() throws InterruptedException {
+    public void testRomanB() {
         getDriver().manage().deleteAllCookies();
         getDriver().manage().window().maximize();
         getDriver().get("https://www.homedepot.com/");
 
         WebElement input = getDriver().findElement(By.id("headerSearch"));
         input.sendKeys("aluminum angle\n");
-        Thread.sleep(3000);
 
         WebElement finder = getDriver().findElement(By.xpath("//span[@class ='product-pod__title__product']"));
 
         Assert.assertTrue(finder.getText().toLowerCase().contains("aluminum angle"));
-        Thread.sleep(1000);
         }
     
-  @Test
+  @Ignore
+        @Test
     public void testEdwardNasdaq(){
         getDriver().manage().deleteAllCookies();
         getDriver().manage().window().maximize();
@@ -122,15 +123,13 @@ public class GroupBugBustersTest extends BaseTest {
     }
 
     @Test
-    public void testYevgeniyaRudenko() throws InterruptedException {
+    public void testYevgeniyaRudenko() {
         getDriver().get("https://demoqa.com/automation-practice-form");
-        Thread.sleep(2000);
 
         WebElement firstName = getDriver().findElement(By.id("firstName"));
         firstName.sendKeys("Yevgeniya");
         WebElement lastName = getDriver().findElement(By.id("lastName"));
         lastName.sendKeys("Rudenko");
-        Thread.sleep(1000);
 
         WebElement genderFemale = getDriver().findElement(By.xpath("//input[@name='gender'][@value='Female']"));
         TestUtils.jsClick(getDriver(), genderFemale);
@@ -140,13 +139,16 @@ public class GroupBugBustersTest extends BaseTest {
 
         WebElement checkBoxValue1 = getDriver().findElement(By.xpath("//input[@type='checkbox'][@value=1]"));
         TestUtils.jsClick(getDriver(), checkBoxValue1);
-        Thread.sleep(2000);
 
         WebElement address = getDriver().findElement(By.xpath("//textarea[@id='currentAddress']"));
         address.sendKeys("11 Washington St., Seattle, WA, 56043");
 
         TestUtils.jsClick(getDriver(), getDriver().findElement(By.id("submit")));
-        Thread.sleep(2000);
+
+
+        WebDriverWait wait = new WebDriverWait(getDriver(), 40);
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("example-modal-sizes-title-lg"),
+                "Thanks for submitting the form"));
 
 
         WebElement formHeader = getDriver().findElement(By.id("example-modal-sizes-title-lg"));
@@ -181,6 +183,7 @@ public class GroupBugBustersTest extends BaseTest {
         Assert.assertEquals(featureTitleFinder.getText(), "Tweens - Growth and Development");
     }
 
+    @Ignore
     @Test
     public void testValeriiSarukhanov() {
 
