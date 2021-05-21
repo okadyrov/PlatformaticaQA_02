@@ -137,4 +137,17 @@ public class GroupBreakingBadJavaTest extends BaseTest {
 
         Assert.assertEquals(output.getText(), "Sacramento");
     }
+
+    @Test
+    public void testViktoriaKPark() {
+        getDriver().get("https://www.nps.gov/index.htm");
+        WebElement input = getDriver().findElement(By.className("js-toggle"));
+        input.sendKeys("\n haleakala \n");
+        getDriver().get("https://www.nps.gov/hale/index.htm");
+        WebElement moreButton = getDriver().findElement(By.id("anch_20"));
+        moreButton.click();
+        WebElement planVisit = getDriver().findElement(By
+                .xpath("/html/body/div[11]/div[3]/div/div[2]/div[1]/h1"));
+        Assert.assertEquals(planVisit.getText(), "Plan Your Visit");
+    }
 }
