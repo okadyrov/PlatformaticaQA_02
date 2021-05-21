@@ -2,6 +2,7 @@ import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class IrinaBTest extends BaseTest {
@@ -15,6 +16,7 @@ public class IrinaBTest extends BaseTest {
         Assert.assertEquals(actualResult.getText(), "Welcome to 99 Bottles of Beer");
     }
 
+    @Ignore
     @Test
     public void testIrinaB2() {
         getDriver().get("https://us.etrade.com/home");

@@ -21,6 +21,7 @@ public class IlyaVTest {
         driver = new ChromeDriver();
     }
 
+    @Ignore
     @Test
     public void test() throws InterruptedException {
         driver.get("https://www.gismeteo.ru");

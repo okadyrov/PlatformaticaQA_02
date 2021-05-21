@@ -27,6 +27,7 @@ public class PennyHofstadterTest {
         driver = new ChromeDriver();
     }
 
+    @Ignore
     @Test
     public void review() {
         driver.get("http://shop.demoqa.com/my-account/");
@@ -37,6 +38,7 @@ public class PennyHofstadterTest {
         driver.navigate().refresh();
     }
 
+    @Ignore
     @Test
     public void testPennyHofstadter() throws InterruptedException {
         driver.get("https://demoqa.com/automation-practice-form");

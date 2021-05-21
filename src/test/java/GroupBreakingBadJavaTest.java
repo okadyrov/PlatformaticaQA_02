@@ -138,6 +138,7 @@ public class GroupBreakingBadJavaTest extends BaseTest {
         Assert.assertEquals(output.getText(), "Sacramento");
     }
 
+    @Ignore
     @Test
     public void testViktoriaKPark() {
         getDriver().get("https://www.nps.gov/index.htm");

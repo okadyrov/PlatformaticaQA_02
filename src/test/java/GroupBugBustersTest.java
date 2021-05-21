@@ -29,6 +29,7 @@ public class GroupBugBustersTest extends BaseTest {
         Assert.assertEquals(phone.getText(), "1 (866) 473-7222");
     }
 
+    @Ignore
     @Test
     public void testAndreyTeterin() {
         getDriver().get("https://www.btcsatoshi.com/");
@@ -79,6 +80,7 @@ public class GroupBugBustersTest extends BaseTest {
         Assert.assertTrue(result, "Logo is here");
     }
 
+    @Ignore
     @Test
     public void testRomanB() {
         getDriver().manage().deleteAllCookies();
@@ -93,7 +95,8 @@ public class GroupBugBustersTest extends BaseTest {
         Assert.assertTrue(finder.getText().toLowerCase().contains("aluminum angle"));
         }
     
-  @Test
+  @Ignore
+        @Test
     public void testEdwardNasdaq(){
         getDriver().manage().deleteAllCookies();
         getDriver().manage().window().maximize();
@@ -180,6 +183,7 @@ public class GroupBugBustersTest extends BaseTest {
         Assert.assertEquals(featureTitleFinder.getText(), "Tweens - Growth and Development");
     }
 
+    @Ignore
     @Test
     public void testValeriiSarukhanov() {
 

@@ -37,6 +37,7 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(possibleSideEffectsText.getText(), "To reduce pain and discomfort where you got the shot");
     }
 
+    @Ignore
     @Test
     public void testVitalyZverev() {
 
@@ -75,6 +76,7 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(text, "PayPal is a secure, easy way to pay and get paid - sign up for free");
     }
 
+    @Ignore
     @Test
     public void testHaidukLibrary() {
         getDriver().get("https://www.merriam-webster.com/");

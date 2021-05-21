@@ -20,6 +20,13 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      - uses: actions/cache@v1
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Public IP
         id: ip
         uses: haythem/public-ip@v1.2

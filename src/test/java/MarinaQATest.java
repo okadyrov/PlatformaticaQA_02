@@ -6,6 +6,7 @@ import org.testng.annotations.*;
 
 public class MarinaQATest extends BaseTest {
 
+    @Ignore
     @Test
     public void testMarinaQA() throws InterruptedException {
 
