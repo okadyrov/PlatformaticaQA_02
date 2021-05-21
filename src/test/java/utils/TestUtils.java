@@ -12,8 +12,8 @@ public class TestUtils {
     }
 
     public static void scroll(WebDriver driver, WebElement element) {
-        // todo: implement method
-        throw new RuntimeException("Method \"scroll\" is not implemented");
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].scrollIntoView();", element);
     }
 
     public static void scrollClick(WebDriver driver, WebElement element) {

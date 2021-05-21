@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class GroupAlmondSkyTest extends BaseTest {
 
     @Test
-    public void testTatianaChueva() throws InterruptedException {
+    public void testTatianaChueva()  {
 
         final String expectedResultPageHeader = "CONTACT US";
 
@@ -24,7 +24,6 @@ public class GroupAlmondSkyTest extends BaseTest {
 
         WebElement pushMenu = getDriver().findElement(By.xpath("//div[@id='menuHeader']"));
         pushMenu.click();
-        Thread.sleep(3000);
 
         WebElement inputContactButton = getDriver().findElement(
                 By.xpath("//div[@id='mainNavHeader']/ul[@id='menuElem']/li[@class='contact']/a[@href='/Contact.aspx']"));

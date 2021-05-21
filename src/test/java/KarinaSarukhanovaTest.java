@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.hc.core5.annotation.Internal;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +23,7 @@ public class KarinaSarukhanovaTest {
             driver.manage().window().maximize();
         }
 
+        @Ignore
         @Test
         public void test() {
 

@@ -20,6 +20,7 @@ public class StasChampionTest {
         driver = new ChromeDriver();
     }
 
+    @Ignore
     @Test
     public void test1StasChampion() throws InterruptedException {
         driver.get("https://google.com/");
@@ -33,6 +34,7 @@ public class StasChampionTest {
         Assert.assertEquals(result.getText(), "Jess Glynne - 123 [Official Live Video] - YouTube");
     }
 
+    @Ignore
     @Test
     public void test2StasChampion() throws InterruptedException {
         driver.get("https://bukovel.com/en/");
