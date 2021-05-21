@@ -26,6 +26,7 @@ public class GroupJavaBearsTest extends BaseTest {
         Assert.assertNotEquals(result.getText(), "No Results!");
     }
 
+    @Ignore
     @Test
     public void testAnastasiiaPotapenko() {
         getDriver().get("https://www.nps.gov/findapark/index.htm");
@@ -50,6 +51,7 @@ public class GroupJavaBearsTest extends BaseTest {
         Assert.assertTrue(getDriver().findElement(By.className("js-movie-video-link")).isDisplayed());
     }
 
+    @Ignore
     @Test
     public  void testNataliaGrebeniuk() throws InterruptedException {
         getDriver().get("https://google.com/");
