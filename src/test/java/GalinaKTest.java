@@ -19,8 +19,6 @@ public class GalinaKTest extends BaseTest {
                 By.xpath("//p[text() = '6705 Fortuna NW']"));
 
         Assert.assertEquals(address.getText(), "Location:\n" +
-                "6705 Fortuna NW\n" +
-                "Albuquerque, NM 87121\n" +
-                "Map");
+                "6705 Fortuna NW\n" + "Albuquerque, NM 87121\n" + "Map");
     }
 }
