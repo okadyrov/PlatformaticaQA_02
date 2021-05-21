@@ -1,5 +1,6 @@
 import base.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -19,10 +20,14 @@ public class GalinaKTest extends BaseTest {
         ).click();
 
         String address = "";
-        if (wait.until(ExpectedConditions.textToBePresentInElementLocated(
+/*        if (wait.until(ExpectedConditions.textToBePresentInElementLocated(
                 By.xpath("//div [@id = 'parent-fieldname-text']/div/div/p[9]/strong"),"Location:"))) {
             address = getDriver().findElement(By.xpath("//div [@id = 'parent-fieldname-text']/div/div/p[9]")).getText();
         }
+*/
+        WebElement addressLocator = wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath("//div [@id = 'parent-fieldname-text']/div/div/p[9]/strong")));
+        address = getDriver().findElement(By.xpath("//div [@id = 'parent-fieldname-text']/div/div/p[9]")).getText();
 
         Assert.assertEquals(address, "Location:\n" +
                 "6705 Fortuna NW\n" + "Albuquerque, NM 87121\n" + "Map");
