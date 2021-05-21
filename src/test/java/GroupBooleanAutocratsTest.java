@@ -74,6 +74,7 @@ public class GroupBooleanAutocratsTest extends BaseTest {
         Assert.assertEquals(fieldEmail, email);
     }
 
+    @Ignore
     @Test
     public void testAlekseiMaslo() throws InterruptedException {
 
