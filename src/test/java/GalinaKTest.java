@@ -24,7 +24,6 @@ public class GalinaKTest extends BaseTest {
             address = getDriver().findElement(By.xpath("//div [@id = 'parent-fieldname-text']/div/div/p[9]")).getText();
         }
 
-        Assert.assertEquals(address, "Location:\n" +
-                "6705 Fortuna NW\n" + "Albuquerque, NM 87121\n" + "Map");
+        Assert.assertEquals(address, "Location:\n" + "6705 Fortuna NW\n" + "Albuquerque, NM 87121\n" + "Map");
     }
 }
