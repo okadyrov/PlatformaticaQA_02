@@ -1,15 +1,11 @@
 import base.BaseTest;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class GroupStepInJavaTeamTest extends BaseTest {
 
@@ -41,13 +37,10 @@ public class GroupStepInJavaTeamTest extends BaseTest {
     @Test
     public void testVitalyZverev() {
 
-        String value = "Selenium";
+        final String value = "Selenium";
 
         getDriver().get("https://ya.ru/");
-
-        WebElement input = getDriver().findElement(By.xpath("//span[@class='input__box']/input"));
-        input.sendKeys(value + "\n");
-
+        getDriver().findElement(By.xpath("//span[@class='input__box']/input")).sendKeys(value + "\n");
         WebElement result = getDriver().findElement(By.xpath("//div[contains(@class, 'serp-title_font')]"));
 
         Assert.assertEquals(result.getText(), value);
