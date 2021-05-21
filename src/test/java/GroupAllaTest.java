@@ -93,4 +93,17 @@ public class GroupAllaTest  extends BaseTest {
         Assert.assertEquals(result.getText(), "Белорусский портал TUT.BY. Новости Беларуси и мира");
     }
 
+    @Test
+    public  void testJuliaKnyazeva() {
+
+        getDriver().get("https://software-testing.ru/");
+
+        WebElement input = getDriver().findElement(By.xpath("//a[@href='/library']"));
+        input.click();
+
+        WebElement result = getDriver().findElement(By.xpath("//a[@href='/library/testing/" +
+                "testing-for-beginners?layout=default']"));
+        Assert.assertEquals(result.getText(), "Начинающему тестировщику");
+    }
+
 }
