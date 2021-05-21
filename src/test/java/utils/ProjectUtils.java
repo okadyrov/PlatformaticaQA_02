@@ -3,6 +3,8 @@ package utils;
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -63,5 +65,12 @@ public class ProjectUtils {
         driver.findElement(By.name("login_name")).sendKeys(login);
         driver.findElement(By.name("password")).sendKeys(pas);
         driver.findElement(By.cssSelector("button[type=submit]")).click();
+    }
+
+    public static void reset(WebDriver driver) {
+        driver.findElement(By.id("navbarDropdownProfile")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath("//a[@href=\"index.php?action=reset\"]"))).click();
     }
 }
