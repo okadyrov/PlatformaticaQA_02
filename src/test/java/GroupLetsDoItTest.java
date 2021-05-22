@@ -1,12 +1,10 @@
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class GroupLetsDoItTest extends BaseTest {
 
-    @Ignore
     @Test
     public void viktoriiaMarushevskaTargetTest() {
         getDriver().manage().deleteAllCookies();
