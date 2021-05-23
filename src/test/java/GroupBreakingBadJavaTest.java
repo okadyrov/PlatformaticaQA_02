@@ -82,7 +82,7 @@ public class GroupBreakingBadJavaTest extends BaseTest {
 
         Assert.assertEquals(result.getText(), "Основные Git команды.");
     }
-
+    @Ignore
     @Test
     public void testLenaDik(){
 

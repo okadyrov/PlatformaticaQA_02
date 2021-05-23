@@ -36,8 +36,9 @@ public class GroupSquirrelsTest extends BaseTest {
     public void testRichardGobal() {
         getDriver().get("https://www.iherb.com/");
         getDriver().findElement(By.className("iherb-header-search-input")).sendKeys("blueberry juice\n");
-        getDriver().findElement(By.xpath("//*[@id=\"pid_7091\"]/div[2]/div[1]/a")).click();
-        WebElement isItInStock = getDriver().findElement(By.xpath("//*[@id='stock-status']/strong"));
+        getDriver().findElement(By.xpath(
+                "//a[contains(@title,'Laboratories, Pure Blueberry, 100% Juice Concentrate, Unsweetened, 16 fl oz (473 ml)')]")).click();
+        WebElement isItInStock = getDriver().findElement(By.xpath("//div[@id ='stock-status' ]/strong[@class='text-primary']"));
         Assert.assertEquals(isItInStock.getText(), "In Stock");
     }
 }

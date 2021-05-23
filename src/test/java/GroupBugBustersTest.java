@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import utils.TestUtils;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class GroupBugBustersTest extends BaseTest {
@@ -183,17 +184,16 @@ public class GroupBugBustersTest extends BaseTest {
         Assert.assertEquals(featureTitleFinder.getText(), "Tweens - Growth and Development");
     }
 
-    @Ignore
     @Test
-    public void testValeriiSarukhanov() {
+    public void testValeriiSarukhanov1() {
 
-        getDriver().get("https://www.homedepot.com/");
+        getDriver().get("http://www.vlp.com/");
 
-        WebElement input = getDriver().findElement(By.id("headerSearch"));
-        input.sendKeys("rose\n");
+        WebElement input = getDriver().findElement(By.xpath("//li//*[text()='Contact Us']"));
+        input.click();
 
-        WebElement finder = getDriver().findElement(By.xpath("//span[@class ='product-pod__title__product']"));
+        WebElement information = getDriver().findElement(By.id("contactUsNoticeContent"));
 
-        Assert.assertTrue(finder.getText().toLowerCase().contains("rose"));
+        Assert.assertTrue(information.getText().contains("Contact Us"));
     }
 }

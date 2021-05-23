@@ -1,4 +1,4 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
+import base.BaseTest;
 import org.apache.hc.core5.annotation.Internal;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,40 +8,20 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import java.util.List;
 
-public class KarinaSarukhanovaTest {
+public class KarinaSarukhanovaTest extends BaseTest {
 
-        @BeforeClass
-        public void before() {
-            WebDriverManager.chromedriver().setup();
-        }
+    @Test
+    public void test() {
 
-        private WebDriver driver;
+        getDriver().get("https://www.gamestop.com/");
 
-        @BeforeMethod
-        public void beforeTest() {
-            driver = new ChromeDriver();
-            driver.manage().window().maximize();
-        }
+        WebElement input = getDriver().findElement(By.name("q"));
+        input.sendKeys("motherboard\n");
 
-        @Ignore
-        @Test
-        public void test() {
-
-            driver.get("https://www.gamestop.com/");
-
-            WebElement input = driver.findElement(By.name("q"));
-            input.sendKeys("motherboard\n");
-
-            List<WebElement> result = driver.findElements(By.cssSelector("div.less-tile-info .link-name"));
-            for (int i = 0; i < result.size(); i++) {
-                String text = result.get(i).getText();
-                Assert.assertTrue(text.contains("Motherboard"));
-            }
-        }
-
-        @AfterMethod
-        public void afterTest() {
-            driver.quit();
+        List<WebElement> result = getDriver().findElements(By.cssSelector("div.less-tile-info .link-name"));
+        for (int i = 0; i < result.size(); i++) {
+            String text = result.get(i).getText();
+            Assert.assertTrue(text.contains("Motherboard"));
         }
     }
-
+}

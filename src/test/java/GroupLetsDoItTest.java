@@ -5,7 +5,6 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class GroupLetsDoItTest extends BaseTest {
-
     @Ignore
     @Test
     public void viktoriiaMarushevskaTargetTest() {
