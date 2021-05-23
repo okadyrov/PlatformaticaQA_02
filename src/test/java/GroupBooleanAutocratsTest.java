@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 
 
 public class GroupBooleanAutocratsTest extends BaseTest {
-
+    @Ignore
     @Test
     public void UlianaShutaTest() {
 
