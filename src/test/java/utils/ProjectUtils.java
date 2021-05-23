@@ -68,9 +68,8 @@ public class ProjectUtils {
     }
 
     public static void reset(WebDriver driver) {
-        driver.findElement(By.id("navbarDropdownProfile")).click();
         WebDriverWait wait = new WebDriverWait(driver, 20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//a[@href=\"index.php?action=reset\"]"))).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("navbarDropdownProfile"))).click();
+        driver.findElement(By.xpath("//a[@href=\"index.php?action=reset\"]")).click();
     }
 }

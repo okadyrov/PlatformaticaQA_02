@@ -31,7 +31,7 @@ public class GroupSquirrelsTest extends BaseTest {
         Assert.assertEquals(result.getText(), "Website");
     }
 
-
+    @Ignore
     @Test
     public void testRichardGobal() {
         getDriver().get("https://www.iherb.com/");
