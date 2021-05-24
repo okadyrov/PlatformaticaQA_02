@@ -17,6 +17,6 @@ public class GroupJPowerTest extends BaseTest {
         List<WebElement> listOfElement = getDriver().findElements(
                 By.xpath("//ul[contains(@class, 'item-list')]/li"));
 
-        Assert.assertEquals(listOfElement.size(), 56);
+        Assert.assertNotEquals(listOfElement.size(), 0);
     }
 }
