@@ -25,7 +25,7 @@ public class GroupAllaTest  extends BaseTest {
 
     }
 
-    @Ignore
+    
     @Test
     public void testGunchenkoAlex() {
 
