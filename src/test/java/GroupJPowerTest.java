@@ -7,7 +7,6 @@ import java.util.List;
 
 public class GroupJPowerTest extends BaseTest {
 
-    @Ignore
     @Test
     public void testOlgaKogut() {
         getDriver().get("https://www.klubok.com/");
