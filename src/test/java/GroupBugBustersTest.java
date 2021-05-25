@@ -20,6 +20,7 @@ public class GroupBugBustersTest extends BaseTest {
         Assert.assertTrue(result.isDisplayed());
     }
 
+    @Ignore
     @Test
     public void testLudaPetkel() {
         getDriver().get("https://www.flooringliquidators.ca/");
