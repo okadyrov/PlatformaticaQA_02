@@ -10,6 +10,7 @@ public class DariaAltukhovaTest extends BaseTest {
     final String mainURL = "https://www.edcast.com/";
     final String demoUrl = "https://www.edcast.com/corp/request-a-demo/";
 
+    @Ignore
     @Test
     public void testDariaAltukhovaOpenDemoFromPage()  {
         getDriver().get(mainURL);

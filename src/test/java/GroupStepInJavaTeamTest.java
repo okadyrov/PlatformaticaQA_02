@@ -19,7 +19,6 @@ public class GroupStepInJavaTeamTest extends BaseTest {
         Assert.assertEquals(getDriver().findElement(By.tagName("h1")).getText(), "Web element");
     }
 
-    @Ignore
     @Test
     public void testMarianaLuchynets() {
 
