@@ -11,9 +11,7 @@ public class EntityGanttTest extends BaseTest {
     @Test
     public void testCreateaNewRecordAndSave() {
 
-        getDriver().get("https://ref2.eteam.work/");
-        ProjectUtils.login(getDriver());
-        ProjectUtils.reset(getDriver());
+        ProjectUtils.start(getDriver());
 
         WebElement ganttTab = getDriver().findElement(By.xpath("//p[contains (text(), 'Gantt')]"));
         ganttTab.click();

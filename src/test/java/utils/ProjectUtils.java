@@ -73,4 +73,14 @@ public class ProjectUtils {
         wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//a[contains(text(),'!!! Reset all for my user !!!')]"))).click();
     }
+
+    public static void get(WebDriver driver) {
+        driver.get("https://ref2.eteam.work/");
+    }
+
+    public static void start(WebDriver driver) {
+        get(driver);
+        login(driver);
+        reset(driver);
+    }
 }
