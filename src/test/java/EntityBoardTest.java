@@ -94,7 +94,6 @@ public class EntityBoardTest extends BaseTest {
         int countInRB = countInRecyclingBinBefore - countInRecyclingBinAfter;
         Assert.assertEquals(countInRB, -1);
 
-        ProjectUtils.reset(getDriver());
     }
 
     @Test
@@ -127,7 +126,6 @@ public class EntityBoardTest extends BaseTest {
         int count = countOfRecordsInRBBeforeDelete - countOfRecordsInRBAfterDelete;
         Assert.assertEquals(count, 1);
 
-        ProjectUtils.reset(getDriver());
     }
 }
 
