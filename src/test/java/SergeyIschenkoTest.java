@@ -6,7 +6,6 @@ import org.testng.annotations.*;
 
 public class SergeyIschenkoTest extends BaseTest {
 
-    @Ignore
     @Test
     public void testSergeIschenko() {
         getDriver().get("https://www.safeway.com/");
