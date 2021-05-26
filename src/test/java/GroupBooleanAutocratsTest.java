@@ -74,22 +74,18 @@ public class GroupBooleanAutocratsTest extends BaseTest {
         Assert.assertEquals(fieldEmail, email);
     }
 
-    @Ignore
     @Test
-    public void testAlekseiMaslo() throws InterruptedException {
+    public void testAlekseiMaslo() {
 
         final String expResultText = "desk";
 
         getDriver().get("https://www.ikea.com/us/en/");
-        Thread.sleep(1000);
 
         WebElement inputField = getDriver().findElement(By.name("q"));
         inputField.sendKeys("desk");
-        Thread.sleep(1000);
 
         WebElement searchButton = getDriver().findElement(By.id("search-box__searchbutton"));
         searchButton.click();
-        Thread.sleep(5000);
 
         WebElement surveyText = getDriver().findElement(By.xpath("//section/fieldset/legend"));
 
