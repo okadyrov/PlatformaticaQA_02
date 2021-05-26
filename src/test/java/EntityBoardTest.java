@@ -71,12 +71,8 @@ public class EntityBoardTest extends BaseTest {
 
     @Test
     public void testEntityBoardDeleteRecordAt002_01() throws InterruptedException {
-        getDriver().get("https://ref2.eteam.work/");
-        WebDriverWait wait = new WebDriverWait(getDriver(), 20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@type='submit']")));
 
-        ProjectUtils.login(getDriver());
-        ProjectUtils.reset(getDriver());
+        ProjectUtils.start(getDriver());
 
         moveToElementAction(getDriver());
 
@@ -104,12 +100,7 @@ public class EntityBoardTest extends BaseTest {
     @Test
     public void testEntityBoardDeleteRecordFromRecyclingBinAt002_02() throws InterruptedException {
 
-        getDriver().get("https://ref2.eteam.work/");
-        WebDriverWait wait = new WebDriverWait(getDriver(), 20);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@type='submit']")));
-
-        ProjectUtils.login(getDriver());
-        ProjectUtils.reset(getDriver());
+        ProjectUtils.start(getDriver());
 
         moveToElementAction(getDriver());
 
