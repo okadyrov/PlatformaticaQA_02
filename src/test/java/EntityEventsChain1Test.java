@@ -13,10 +13,7 @@ public class EntityEventsChain1Test extends BaseTest {
 
         WebDriverWait wait = new WebDriverWait(getDriver(), 20);
 
-        getDriver().get("https://ref2.eteam.work/");
-
-        ProjectUtils.login(getDriver());
-        ProjectUtils.reset(getDriver());
+        ProjectUtils.start(getDriver());
 
         getDriver().get("https://ref2.eteam.work/index.php?action=action_list&entity_id=61&mod=2");
 
