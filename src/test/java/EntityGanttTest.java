@@ -14,7 +14,7 @@ public class EntityGanttTest extends BaseTest {
         ProjectUtils.start(getDriver());
 
         WebElement ganttTab = getDriver().findElement(By.xpath("//p[contains (text(), 'Gantt')]"));
-        ganttTab.click();
+        TestUtils.scrollClick(getDriver(), ganttTab);
 
         getDriver().findElement(By.xpath("//div/i[.='create_new_folder']")).click();
         getDriver().findElement(By.id("string")).sendKeys("Test");
